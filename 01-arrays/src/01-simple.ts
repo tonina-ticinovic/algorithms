@@ -126,7 +126,19 @@ export const rotateKLeft = (arr: number[], k: number): number[] => {
  * Example:
  * waveArray([8, 1, 2, 3, 4, 5, 6, 4, 2]) => [8, 1, 3, 2, 5, 4, 6, 2, 4 ]
  */
-export const waveArray = (arr: number[]): number[] => [];
+export const waveArray = (arr: number[]): number[] => {
+  for (let i = 1; i <= arr.length; i += 2) {
+    if (arr[i] > arr[i - 1] || (arr[i + 1] && arr[i] > arr[i + 1])) {
+      if (arr[i + 1] && arr[i - 1] > arr[i + 1]) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+      } else {
+        [arr[i - 1], arr[i]] = [arr[i], arr[i + -1]];
+      }
+    }
+  }
+
+  return arr;
+};
 
 /**
  * find maximum difference between the indices of two elements
