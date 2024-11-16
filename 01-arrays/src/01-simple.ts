@@ -189,7 +189,16 @@ export const mergeSorted = (arr1: number[], arr2: number[]): number[] => {
  * Example:
  * findMissingNumber([1, 2, 3, 5, 6, 7, 8]) => 4
  */
-export const findMissingNumber = (arr: number[]): number => 0;
+export const findMissingNumber = (arr: number[]): number => {
+  // this solution assumes that starting number of the array is correct
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i + 1] && arr[i] + 1 !== arr[i + 1]) {
+      return arr[i] + 1;
+    }
+  }
+
+  return -1;
+};
 
 export type Data = {
   [name: string]: number;
