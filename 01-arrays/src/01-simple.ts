@@ -18,7 +18,24 @@ export const sumAll = (arr: number[]): number => {
  * @param arr - array of numbers
  * @returns sum of all even numbers in the array or 0 if the array is empty
  */
-export const sumEven = (arr: number[]): number => 0;
+export const sumEven = (arr: number[]): number => {
+  return arr.reduce((accumulator, current) => {
+    if (current % 2 == 0) {
+      return accumulator + current;
+    }
+    return accumulator;
+  }, 0);
+
+  // also possible
+  let sum = 0;
+
+  for (let i = 0; i <= arr.length; i++) {
+    if (arr[i] % 2 == 0) {
+      sum += arr[i];
+    }
+  }
+  return sum;
+};
 
 /**
  * search for a target value in an array
