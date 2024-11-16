@@ -1,56 +1,48 @@
-import { powerOf4 } from './util'
-import { findRepeatedSequences } from '.'
+import { powerOf4 } from './util';
+import { findRepeatedSequences, findRepeatedSequencesMap } from '.';
 
 describe('findRepeatedSequences', () => {
   it.each([
     {
-      dna: "AAAAACCCCCAAAAACCCCCC",
+      dna: 'AAAAACCCCCAAAAACCCCCC',
       k: 8,
-      expected:[
-        "AAAAACCC",
-        "AAAACCCC",
-        "AAACCCCC"
-      ]
+      expected: ['AAAAACCC', 'AAAACCCC', 'AAACCCCC'],
     },
     {
-      dna: "GGGGGGGGGGGGGGGGGGGGGGGGG",
+      dna: 'GGGGGGGGGGGGGGGGGGGGGGGGG',
       k: 9,
-      expected:["GGGGGGGGG"]
+      expected: ['GGGGGGGGG'],
     },
     {
-      dna: "TTTTTCCCCCCCTTTTTTCCCCCCCTTTTTTT",
+      dna: 'TTTTTCCCCCCCTTTTTTCCCCCCCTTTTTTT',
       k: 10,
-      expected:[
-        "TTTTTCCCCC",
-        "TTTCCCCCCC",
-        "TTCCCCCCCT",
-        "TCCCCCCCTT",
-        "CCCCCCCTTT",
-        "CCCCCTTTTT",
-        "CCCCTTTTTT",
-        "TTTTCCCCCC",
-        "CCCCCCTTTT"]
+      expected: [
+        'TTTTTCCCCC',
+        'TTTCCCCCCC',
+        'TTCCCCCCCT',
+        'TCCCCCCCTT',
+        'CCCCCCCTTT',
+        'CCCCCTTTTT',
+        'CCCCTTTTTT',
+        'TTTTCCCCCC',
+        'CCCCCCTTTT',
+      ],
     },
     {
-      dna: "AAAAAACCCCCCCAAAAAAAACCCCCCCTG",
+      dna: 'AAAAAACCCCCCCAAAAAAAACCCCCCCTG',
       k: 10,
-      expected:[
-        "AAAAAACCCC",
-        "AAAAACCCCC",
-        "AAAACCCCCC",
-        "AAACCCCCCC",
-      ]
+      expected: ['AAAAAACCCC', 'AAAAACCCCC', 'AAAACCCCCC', 'AAACCCCCCC'],
     },
     {
-      dna: "ABC",
+      dna: 'ABC',
       k: 4,
-      expected:[]
-    }
-
+      expected: [],
+    },
   ])('computes correct results for $dna', ({ dna, k, expected }) => {
-    const result = findRepeatedSequences(dna,k)
+    // const resultMap = findRepeatedSequencesMap(dna, k);
+    const result = findRepeatedSequences(dna, k);
 
-    expect(Array.from(result).sort()).toEqual(expected.sort())
-  })
-
-})
+    // expect(Array.from(resultMap).sort()).toEqual(expected.sort());
+    expect(Array.from(result).sort()).toEqual(expected.sort());
+  });
+});
