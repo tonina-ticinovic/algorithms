@@ -90,7 +90,33 @@ export const binarySearch = (arr: number[], target: number): boolean => {
  *
  * rotateKLeft([1, 2, 3, 4, 5], 6) => [2, 3, 4, 5, 1]
  */
-export const rotateKLeft = (arr: number[], k: number): number[] => [];
+export const rotateKLeft = (arr: number[], k: number): number[] => {
+  // arr.unshift adds specified items to the beginning of an array
+  // arr.shift removes the first element from an array and returns it
+  // arr.pop removes the last element from an array and returns it
+
+  // complexity O(n * k)
+  // thi is rotate right
+  // for (let i = 0; i < k; i++) {
+  //   const element = arr.pop();
+
+  //   if (element) {
+  //     arr.unshift(element); // we take last element and add it to the beginning of the array
+  //   }
+  //   console.log(arr);
+  // }
+
+  for (let i = 0; i < k; i++) {
+    const element = arr.shift();
+
+    if (element) {
+      arr.push(element); // we take the first element and add it to the end of the array
+    }
+    console.log(arr);
+  }
+
+  return arr;
+};
 
 /**
  * create a wave array - arrange the array elements such that the element at the odd indices are less than or equal to their neighboring elements at the even indices
