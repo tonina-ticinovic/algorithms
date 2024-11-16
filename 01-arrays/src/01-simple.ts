@@ -1,0 +1,111 @@
+/**
+ * compute the sum of values
+ * @param arr - Array of numbers
+ * @returns - Sum of all numbers in the array or 0 if the array is empty
+ */
+export const sumAll = (arr: number[]): number => 0
+
+
+/**
+ * compute the sum of even values
+ * @param arr - array of numbers
+ * @returns sum of all even numbers in the array or 0 if the array is empty
+ */
+export const sumEven = (arr: number[]): number => 0
+
+
+/**
+ * search for a target value in an array
+ * @param arr - array of numbers
+ * @param target - Value to search for
+ * @returns true if the target value is found, false otherwise
+ */
+export const sequentialSearch = (arr: number[], target: number): boolean => false
+
+
+/**
+ * search for a target value in a sorted array
+ * @param arr - a sorted array of numbers
+ * @param target - the value to search for
+ * @returns true if the target value is found, false otherwise
+ */
+export const binarySearch = (arr: number[], target: number): boolean => false
+
+
+/**
+ * rotate an array k positions to the left
+ * @param arr of numbers
+ * @param k number of positions to rotate
+ * @returns a new array with the values rotated k positions to the left
+ *
+ * Example:
+ * rotateKLeft([1, 2, 3, 4, 5], 2) => [3, 4, 5, 1, 2]
+ *
+ * rotateKLeft([1, 2, 3, 4, 5], 6) => [2, 3, 4, 5, 1]
+ */
+export const rotateKLeft     = (arr: number[], k: number): number[] => []
+
+
+/**
+ * create a wave array - arrange the array elements such that the element at the odd indices are less than or equal to their neighboring elements at the even indices
+ * @param arr - array of numbers
+ * @returns a new array with the values in a wave pattern
+ *
+ * Example:
+ * waveArray([8, 1, 2, 3, 4, 5, 6, 4, 2]) => [8, 1, 3, 2, 5, 4, 6, 2, 4 ]
+ */
+export const waveArray = (arr: number[]): number[] => []
+
+/**
+ * find maximum difference between the indices of two elements
+ * @param arr - array of numbers
+ * @returns - the maximum difference between the indices of two elements in the array such that the larger
+ *
+ * @description
+ * Find the maximum difference between the indices of two elements such that the larger element
+ * appears after the smaller element. The difference between j and i is the maximum among all
+ * possible pairs of indices in the array. The element at index j is greater than the element at
+ * index i i.e., arr[j] > arr[i].
+ *
+ * Example:
+ * findIndexMaxDifference([33, 9, 10, 3, 2, 60, 30, 33, 1]) => 6
+ */
+export const findIndexMaxDifference = (arr: number[]): number => 0
+
+
+/**
+ * merge two sorted arrays
+ * @param arr1 - first sorted array
+ * @param arr2 - second sorted array
+ * @returns a new array with the values from arr1 and arr2 merged and sorted
+ *
+ * Example:
+ * mergeArrays([1, 3, 5], [2, 4, 6]) => [1, 2, 3, 4, 5, 6]
+ */
+export const mergeSorted = (arr1: number[], arr2: number[]): number[] => []
+
+
+/**
+ * find the missing number in an array of positive numbers
+ * @param arr - array of positive numbers
+ * @returns the missing number in the array or -1 if no number is missing
+ *
+ * Example:
+ * findMissingNumber([1, 2, 3, 5, 6, 7, 8]) => 4
+ */
+export const findMissingNumber = (arr: number[]): number => 0
+
+export type Data = {
+  [name: string]: number
+}
+
+/**
+ * build an object from the given names and values
+ * @param names - array with names of the properties
+ * @param values - array with values of the properties
+ * @returns an object with the names and values
+ *
+ * Example:
+ * buildObject(['a', 'b', 'c'], [1, 2, 3]) => { a: 1, b: 2, c: 3 }
+ */
+export const buildData = (names:string[], values: number[]): Data => ({})
