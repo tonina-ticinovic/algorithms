@@ -154,7 +154,19 @@ export const waveArray = (arr: number[]): number[] => {
  * Example:
  * findIndexMaxDifference([33, 9, 10, 3, 2, 60, 30, 33, 1]) => 6
  */
-export const findIndexMaxDifference = (arr: number[]): number => 0;
+export const findIndexMaxDifference = (arr: number[]): number => {
+  let maxDiff = -1;
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] > arr[i] && j - i > maxDiff) {
+        maxDiff = j - i;
+      }
+    }
+  }
+
+  return maxDiff;
+};
 
 /**
  * merge two sorted arrays
