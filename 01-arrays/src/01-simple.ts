@@ -3,16 +3,22 @@
  * @param arr - Array of numbers
  * @returns - Sum of all numbers in the array or 0 if the array is empty
  */
-export const sumAll = (arr: number[]): number => 0
+export const sumAll = (arr: number[]): number => {
+  return arr.reduce((accumulator, current) => accumulator + current, 0);
 
+  // also possible to use forEach
+  let sum = 0;
+  arr.forEach((num) => {
+    sum += num;
+  });
+};
 
 /**
  * compute the sum of even values
  * @param arr - array of numbers
  * @returns sum of all even numbers in the array or 0 if the array is empty
  */
-export const sumEven = (arr: number[]): number => 0
-
+export const sumEven = (arr: number[]): number => 0;
 
 /**
  * search for a target value in an array
@@ -20,8 +26,8 @@ export const sumEven = (arr: number[]): number => 0
  * @param target - Value to search for
  * @returns true if the target value is found, false otherwise
  */
-export const sequentialSearch = (arr: number[], target: number): boolean => false
-
+export const sequentialSearch = (arr: number[], target: number): boolean =>
+  false;
 
 /**
  * search for a target value in a sorted array
@@ -29,8 +35,7 @@ export const sequentialSearch = (arr: number[], target: number): boolean => fals
  * @param target - the value to search for
  * @returns true if the target value is found, false otherwise
  */
-export const binarySearch = (arr: number[], target: number): boolean => false
-
+export const binarySearch = (arr: number[], target: number): boolean => false;
 
 /**
  * rotate an array k positions to the left
@@ -43,8 +48,7 @@ export const binarySearch = (arr: number[], target: number): boolean => false
  *
  * rotateKLeft([1, 2, 3, 4, 5], 6) => [2, 3, 4, 5, 1]
  */
-export const rotateKLeft     = (arr: number[], k: number): number[] => []
-
+export const rotateKLeft = (arr: number[], k: number): number[] => [];
 
 /**
  * create a wave array - arrange the array elements such that the element at the odd indices are less than or equal to their neighboring elements at the even indices
@@ -54,7 +58,7 @@ export const rotateKLeft     = (arr: number[], k: number): number[] => []
  * Example:
  * waveArray([8, 1, 2, 3, 4, 5, 6, 4, 2]) => [8, 1, 3, 2, 5, 4, 6, 2, 4 ]
  */
-export const waveArray = (arr: number[]): number[] => []
+export const waveArray = (arr: number[]): number[] => [];
 
 /**
  * find maximum difference between the indices of two elements
@@ -70,8 +74,7 @@ export const waveArray = (arr: number[]): number[] => []
  * Example:
  * findIndexMaxDifference([33, 9, 10, 3, 2, 60, 30, 33, 1]) => 6
  */
-export const findIndexMaxDifference = (arr: number[]): number => 0
-
+export const findIndexMaxDifference = (arr: number[]): number => 0;
 
 /**
  * merge two sorted arrays
@@ -82,8 +85,7 @@ export const findIndexMaxDifference = (arr: number[]): number => 0
  * Example:
  * mergeArrays([1, 3, 5], [2, 4, 6]) => [1, 2, 3, 4, 5, 6]
  */
-export const mergeSorted = (arr1: number[], arr2: number[]): number[] => []
-
+export const mergeSorted = (arr1: number[], arr2: number[]): number[] => [];
 
 /**
  * find the missing number in an array of positive numbers
@@ -93,11 +95,11 @@ export const mergeSorted = (arr1: number[], arr2: number[]): number[] => []
  * Example:
  * findMissingNumber([1, 2, 3, 5, 6, 7, 8]) => 4
  */
-export const findMissingNumber = (arr: number[]): number => 0
+export const findMissingNumber = (arr: number[]): number => 0;
 
 export type Data = {
-  [name: string]: number
-}
+  [name: string]: number;
+};
 
 /**
  * build an object from the given names and values
@@ -108,4 +110,4 @@ export type Data = {
  * Example:
  * buildObject(['a', 'b', 'c'], [1, 2, 3]) => { a: 1, b: 2, c: 3 }
  */
-export const buildData = (names:string[], values: number[]): Data => ({})
+export const buildData = (names: string[], values: number[]): Data => ({});
