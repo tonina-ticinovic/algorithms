@@ -61,7 +61,23 @@ export const sequentialSearch = (arr: number[], target: number): boolean => {
  * @param target - the value to search for
  * @returns true if the target value is found, false otherwise
  */
-export const binarySearch = (arr: number[], target: number): boolean => false;
+export const binarySearch = (arr: number[], target: number): boolean => {
+  // arr.sort((a, b) => a - b); // is says that arr is sorted, but this is just to remember that binary search always works with sorted arrays only
+
+  let low = 0;
+  let high = arr.length - 1;
+
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+
+    if (target === arr[mid]) {
+      return true;
+    } else if (target > arr[mid]) {
+      low = mid + 1;
+    } else high = mid - 1;
+  }
+  return false;
+};
 
 /**
  * rotate an array k positions to the left
