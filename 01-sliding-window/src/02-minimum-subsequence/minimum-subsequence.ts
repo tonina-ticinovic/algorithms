@@ -32,5 +32,52 @@ Solution summary
   */
 
 export const minWindow = (str1: string, str2: string): string => {
-  return ''
-}
+  let minSubLen = str1.length + 1;
+
+  let indexS1 = 0;
+  let indexS2 = 0;
+
+  let start = 0;
+  let end = 0;
+
+  let minSubsequence = '';
+
+  while (indexS1 < str1.length) {
+    for (indexS1 = start; indexS1 < str1.length; indexS1++) {
+      if (str1[indexS1] === str2[indexS2]) {
+        indexS2++;
+      }
+
+      if (indexS2 === str2.length) {
+        start = indexS1;
+        end = indexS1;
+
+        indexS2--;
+
+        while (indexS2 >= 0) {
+          if (str1[start] === str2[indexS2]) {
+            indexS2--;
+          }
+
+          start--;
+        }
+
+        start++;
+
+        if (minSubLen > end - start + 1) {
+          minSubLen = end - start + 1;
+          minSubsequence = str1.substring(start, end + 1);
+        }
+
+        // Resume search from start + 1
+        indexS1 = start;
+        indexS2 = 0;
+      }
+    }
+
+    // Move indexS1 forward if no match was found to avoid infinite loop
+    indexS1++;
+    indexS2 = 0;
+  }
+  return minSubsequence;
+};
