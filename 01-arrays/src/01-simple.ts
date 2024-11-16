@@ -43,8 +43,17 @@ export const sumEven = (arr: number[]): number => {
  * @param target - Value to search for
  * @returns true if the target value is found, false otherwise
  */
-export const sequentialSearch = (arr: number[], target: number): boolean =>
-  false;
+export const sequentialSearch = (arr: number[], target: number): boolean => {
+  return Boolean(arr.find((num) => num === target));
+
+  arr.forEach((num) => {
+    if (num === target) {
+      return true;
+    }
+  });
+
+  return false;
+};
 
 /**
  * search for a target value in a sorted array
