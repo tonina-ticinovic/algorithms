@@ -54,16 +54,61 @@ Steps to solve the problem:
 	- create a hash value and a hash set  to store the hash values using the cov
 */
 
+export const findRepeatedSequencesMap = (dna: string, k: number) => {
+  // classic way I know - with maps
+  const map = new Map<string, number>();
 
-import type { DNA } from './util'
-import { mapping, powerOf4 } from './util'
+  for (let i = 0; i < dna.length - k + 1; i++) {
+    const subString = dna.slice(i, i + k);
+    map.set(subString, (map.get(subString) || 0) + 1);
+  }
+
+  const output = [...map.entries()]
+    .map(([key, value]) => (value > 1 ? key : ''))
+    .filter((value) => value !== '');
+
+  return output;
+};
+
+import type { DNA } from './util';
+import { mapping, powerOf4 } from './util';
 
 // base value to multiply coefficients
-const baseValue = 4
+const baseValue = 4;
 
+export const findRepeatedSequences = (dna: string, k: number): Set<string> => {
+  if (k > dna.length) return new Set<string>();
 
-export const findRepeatedSequences = (dna: string, k: number):Set<string> => {
-  const output = new Set<string>
+  const output = new Set<string>();
+  const hashSet = new Set<number>();
 
-  return output
-}
+  const highestPower = powerOf4(k - 1);
+
+  let hash = 0;
+
+  // convert the dna string to an array of numbers
+  const numbers = dna.split('').map((char) => mapping[char as DNA]);
+
+  // compute the hash of the first k-length substring
+  for (let i = 0; i < k; i++) {
+    hash = hash * baseValue + numbers[i];
+  }
+  hashSet.add(hash);
+
+  // iterate over the string and update the hash value for each k-length substring
+  for (let i = k; i < dna.length; i++) {
+    // we remove the first character (c1 * base^(k-1))
+    // and then shift all the rest to the left by multiplying by the base value
+    // and adding the last one (ck * base^0)
+    hash = (hash - numbers[i - k] * highestPower) * baseValue + numbers[i];
+
+    // store the hash value in a hash set
+    if (hashSet.has(hash)) {
+      output.add(dna.slice(i - k + 1, i + 1));
+    } else {
+      hashSet.add(hash);
+    }
+  }
+
+  return output;
+};
