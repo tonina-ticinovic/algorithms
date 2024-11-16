@@ -177,7 +177,9 @@ export const findIndexMaxDifference = (arr: number[]): number => {
  * Example:
  * mergeArrays([1, 3, 5], [2, 4, 6]) => [1, 2, 3, 4, 5, 6]
  */
-export const mergeSorted = (arr1: number[], arr2: number[]): number[] => [];
+export const mergeSorted = (arr1: number[], arr2: number[]): number[] => {
+  return [...arr1, ...arr2].sort((a, b) => a - b);
+};
 
 /**
  * find the missing number in an array of positive numbers
