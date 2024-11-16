@@ -3,16 +3,39 @@
  * @param arr - Array of numbers
  * @returns - Sum of all numbers in the array or 0 if the array is empty
  */
-export const sumAll = (arr: number[]): number => 0
+export const sumAll = (arr: number[]): number => {
+  return arr.reduce((accumulator, current) => accumulator + current, 0);
 
+  // also possible to use forEach
+  let sum = 0;
+  arr.forEach((num) => {
+    sum += num;
+  });
+};
 
 /**
  * compute the sum of even values
  * @param arr - array of numbers
  * @returns sum of all even numbers in the array or 0 if the array is empty
  */
-export const sumEven = (arr: number[]): number => 0
+export const sumEven = (arr: number[]): number => {
+  return arr.reduce((accumulator, current) => {
+    if (current % 2 == 0) {
+      return accumulator + current;
+    }
+    return accumulator;
+  }, 0);
 
+  // also possible
+  let sum = 0;
+
+  for (let i = 0; i <= arr.length; i++) {
+    if (arr[i] % 2 == 0) {
+      sum += arr[i];
+    }
+  }
+  return sum;
+};
 
 /**
  * search for a target value in an array
@@ -20,8 +43,17 @@ export const sumEven = (arr: number[]): number => 0
  * @param target - Value to search for
  * @returns true if the target value is found, false otherwise
  */
-export const sequentialSearch = (arr: number[], target: number): boolean => false
+export const sequentialSearch = (arr: number[], target: number): boolean => {
+  return Boolean(arr.find((num) => num === target));
 
+  arr.forEach((num) => {
+    if (num === target) {
+      return true;
+    }
+  });
+
+  return false;
+};
 
 /**
  * search for a target value in a sorted array
@@ -29,8 +61,23 @@ export const sequentialSearch = (arr: number[], target: number): boolean => fals
  * @param target - the value to search for
  * @returns true if the target value is found, false otherwise
  */
-export const binarySearch = (arr: number[], target: number): boolean => false
+export const binarySearch = (arr: number[], target: number): boolean => {
+  // arr.sort((a, b) => a - b); // is says that arr is sorted, but this is just to remember that binary search always works with sorted arrays only
 
+  let low = 0;
+  let high = arr.length - 1;
+
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+
+    if (target === arr[mid]) {
+      return true;
+    } else if (target > arr[mid]) {
+      low = mid + 1;
+    } else high = mid - 1;
+  }
+  return false;
+};
 
 /**
  * rotate an array k positions to the left
@@ -43,8 +90,33 @@ export const binarySearch = (arr: number[], target: number): boolean => false
  *
  * rotateKLeft([1, 2, 3, 4, 5], 6) => [2, 3, 4, 5, 1]
  */
-export const rotateKLeft     = (arr: number[], k: number): number[] => []
+export const rotateKLeft = (arr: number[], k: number): number[] => {
+  // arr.unshift adds specified items to the beginning of an array
+  // arr.shift removes the first element from an array and returns it
+  // arr.pop removes the last element from an array and returns it
 
+  // complexity O(n * k)
+  // thi is rotate right
+  // for (let i = 0; i < k; i++) {
+  //   const element = arr.pop();
+
+  //   if (element) {
+  //     arr.unshift(element); // we take last element and add it to the beginning of the array
+  //   }
+  //   console.log(arr);
+  // }
+
+  for (let i = 0; i < k; i++) {
+    const element = arr.shift();
+
+    if (element) {
+      arr.push(element); // we take the first element and add it to the end of the array
+    }
+    console.log(arr);
+  }
+
+  return arr;
+};
 
 /**
  * create a wave array - arrange the array elements such that the element at the odd indices are less than or equal to their neighboring elements at the even indices
@@ -54,7 +126,19 @@ export const rotateKLeft     = (arr: number[], k: number): number[] => []
  * Example:
  * waveArray([8, 1, 2, 3, 4, 5, 6, 4, 2]) => [8, 1, 3, 2, 5, 4, 6, 2, 4 ]
  */
-export const waveArray = (arr: number[]): number[] => []
+export const waveArray = (arr: number[]): number[] => {
+  for (let i = 1; i <= arr.length; i += 2) {
+    if (arr[i] > arr[i - 1] || (arr[i + 1] && arr[i] > arr[i + 1])) {
+      if (arr[i + 1] && arr[i - 1] > arr[i + 1]) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+      } else {
+        [arr[i - 1], arr[i]] = [arr[i], arr[i + -1]];
+      }
+    }
+  }
+
+  return arr;
+};
 
 /**
  * find maximum difference between the indices of two elements
@@ -70,8 +154,19 @@ export const waveArray = (arr: number[]): number[] => []
  * Example:
  * findIndexMaxDifference([33, 9, 10, 3, 2, 60, 30, 33, 1]) => 6
  */
-export const findIndexMaxDifference = (arr: number[]): number => 0
+export const findIndexMaxDifference = (arr: number[]): number => {
+  let maxDiff = -1;
 
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] > arr[i] && j - i > maxDiff) {
+        maxDiff = j - i;
+      }
+    }
+  }
+
+  return maxDiff;
+};
 
 /**
  * merge two sorted arrays
@@ -82,8 +177,9 @@ export const findIndexMaxDifference = (arr: number[]): number => 0
  * Example:
  * mergeArrays([1, 3, 5], [2, 4, 6]) => [1, 2, 3, 4, 5, 6]
  */
-export const mergeSorted = (arr1: number[], arr2: number[]): number[] => []
-
+export const mergeSorted = (arr1: number[], arr2: number[]): number[] => {
+  return [...arr1, ...arr2].sort((a, b) => a - b);
+};
 
 /**
  * find the missing number in an array of positive numbers
@@ -93,11 +189,20 @@ export const mergeSorted = (arr1: number[], arr2: number[]): number[] => []
  * Example:
  * findMissingNumber([1, 2, 3, 5, 6, 7, 8]) => 4
  */
-export const findMissingNumber = (arr: number[]): number => 0
+export const findMissingNumber = (arr: number[]): number => {
+  // this solution assumes that starting number of the array is correct
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i + 1] && arr[i] + 1 !== arr[i + 1]) {
+      return arr[i] + 1;
+    }
+  }
+
+  return -1;
+};
 
 export type Data = {
-  [name: string]: number
-}
+  [name: string]: number;
+};
 
 /**
  * build an object from the given names and values
@@ -108,4 +213,12 @@ export type Data = {
  * Example:
  * buildObject(['a', 'b', 'c'], [1, 2, 3]) => { a: 1, b: 2, c: 3 }
  */
-export const buildData = (names:string[], values: number[]): Data => ({})
+export const buildData = (names: string[], values: number[]): Data => {
+  let dataObjects: Data = {};
+
+  for (let i = 0; i < names.length; i++) {
+    dataObjects[names[i]] = values[i];
+  }
+
+  return dataObjects;
+};

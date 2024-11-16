@@ -8,8 +8,8 @@ import {
   sequentialSearch,
   sumAll,
   sumEven,
-  waveArray
-} from './01-simple'
+  waveArray,
+} from './01-simple';
 
 describe('sumAll', () => {
   describe.each([
@@ -17,22 +17,20 @@ describe('sumAll', () => {
       desc: 'when array is empty',
       message: 'returns 0',
       input: [],
-      expected: 0
+      expected: 0,
     },
     {
       desc: 'when array contains multiple values',
       message: 'returns the sum of all values',
       input: [1, 2, 3],
-      expected: 6
-    }
+      expected: 6,
+    },
   ])('$desc', ({ input, expected }) => {
     test('$message', () => {
-      expect(sumAll(input)).toBe(expected)
-    })
-  })
-
-})
-
+      expect(sumAll(input)).toBe(expected);
+    });
+  });
+});
 
 describe('sumEven', () => {
   describe.each([
@@ -40,21 +38,20 @@ describe('sumEven', () => {
       desc: 'when array is empty',
       message: 'returns 0',
       input: [],
-      expected: 0
+      expected: 0,
     },
     {
       desc: 'when array contains multiple values',
       message: 'returns the sum of all even values',
       input: [1, 2, 3, 4],
-      expected: 6
-    }
+      expected: 6,
+    },
   ])('$desc', ({ input, expected }) => {
     test('$message', () => {
-      expect(sumEven(input)).toBe(expected)
-    })
-  })
-})
-
+      expect(sumEven(input)).toBe(expected);
+    });
+  });
+});
 
 describe('sequentialSearch', () => {
   describe.each([
@@ -63,28 +60,28 @@ describe('sequentialSearch', () => {
       message: 'returns false',
       input: [],
       target: 1,
-      expected: false
+      expected: false,
     },
     {
       desc: 'when target is not found',
       message: 'returns false',
       input: [1, 2, 3],
       target: 4,
-      expected: false
+      expected: false,
     },
     {
       desc: 'when target is found',
       message: 'returns true',
       input: [1, 2, 3],
       target: 2,
-      expected: true
-    }
+      expected: true,
+    },
   ])('$desc', ({ input, target, expected }) => {
     test('$message', () => {
-      expect(sequentialSearch(input, target)).toBe(expected)
-    })
-  })
-})
+      expect(sequentialSearch(input, target)).toBe(expected);
+    });
+  });
+});
 
 describe('binarySearch', () => {
   describe.each([
@@ -93,29 +90,28 @@ describe('binarySearch', () => {
       message: 'returns false',
       input: [],
       target: 1,
-      expected: false
+      expected: false,
     },
     {
       desc: 'when target is not found',
       message: 'returns false',
       input: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       target: 10,
-      expected: false
+      expected: false,
     },
     {
       desc: 'when target is found',
       message: 'returns true',
-      input: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 15, 20, 30, 33],
       target: 2,
-      expected: true
-    }
+      expected: true,
+    },
   ])('$desc', ({ input, target, expected }) => {
     test('$message', () => {
-      expect(binarySearch(input, target)).toBe(expected)
-    })
-  })
-})
-
+      expect(binarySearch(input, target)).toBe(expected);
+    });
+  });
+});
 
 describe('rotateKLeft', () => {
   describe.each([
@@ -124,36 +120,35 @@ describe('rotateKLeft', () => {
       message: 'returns an empty array',
       input: [],
       k: 1,
-      expected: []
+      expected: [],
     },
     {
       desc: 'when k is greater than the length of the array',
       message: 'returns a rotated array',
       input: [1, 2, 3, 4, 5],
       k: 6,
-      expected: [2, 3, 4, 5, 1]
+      expected: [2, 3, 4, 5, 1],
     },
     {
       desc: 'when k is less than the length of the array',
       message: 'returns a rotated array',
       input: [1, 2, 3, 4, 5],
       k: 2,
-      expected: [3, 4, 5, 1, 2]
+      expected: [3, 4, 5, 1, 2],
     },
     {
       desc: 'when k is equal to the length of the array',
       message: 'returns the elements in the same order',
       input: [1, 2, 3, 4, 5],
       k: 5,
-      expected: [1, 2, 3, 4, 5]
-    }
-
+      expected: [1, 2, 3, 4, 5],
+    },
   ])('$desc', ({ input, k, expected }) => {
     test('$message', () => {
-      expect(rotateKLeft(input, k)).toEqual(expected)
-    })
-  })
-})
+      expect(rotateKLeft(input, k)).toEqual(expected);
+    });
+  });
+});
 
 describe('waveArray', () => {
   describe.each([
@@ -161,20 +156,44 @@ describe('waveArray', () => {
       desc: 'when array is empty',
       message: 'returns an empty array',
       input: [],
-      expected: []
+      expected: [],
+    },
+    {
+      desc: 'when array contains multiple values',
+      message: 'returns a wave array',
+      input: [7, 6, 8, 4, 9, 3],
+      expected: [7, 6, 8, 4, 9, 3],
+    },
+    {
+      desc: 'when array contains multiple values',
+      message: 'returns a wave array',
+      input: [10, 15, 5, 6, 7, 12],
+      expected: [10, 5, 15, 6, 12, 7],
+    },
+    {
+      desc: 'when array contains multiple values',
+      message: 'returns a wave array',
+      input: [1, 3, 5, 7, 9, 2],
+      expected: [3, 1, 7, 5, 9, 2],
+    },
+    {
+      desc: 'when array contains multiple values',
+      message: 'returns a wave array',
+      input: [11, 5, 6, 4, 13, 8, 2],
+      expected: [11, 5, 6, 4, 13, 2, 8],
     },
     {
       desc: 'when array contains multiple values',
       message: 'returns a wave array',
       input: [8, 1, 2, 3, 4, 5, 6, 4, 2],
-      expected: [8, 1, 3, 2, 5, 4, 6, 2, 4]
-    }
+      expected: [8, 1, 3, 2, 5, 4, 6, 2, 4],
+    },
   ])('$desc', ({ input, expected }) => {
     test('$message', () => {
-      expect(waveArray(input)).toEqual(expected)
-    })
-  })
-})
+      expect(waveArray(input)).toEqual(expected);
+    });
+  });
+});
 
 describe('findIndexMaxDifference', () => {
   describe.each([
@@ -182,20 +201,28 @@ describe('findIndexMaxDifference', () => {
       desc: 'when array is empty',
       message: 'returns -1',
       input: [],
-      expected: -1
+      expected: -1,
     },
     {
       desc: 'when array contains multiple values',
-      message: 'returns the maximum difference between the indices of two elements',
+      message:
+        'returns the maximum difference between the indices of two elements',
       input: [8, 1, 2, 3, 4, 5, 6, 4, 2],
-      expected: 7
-    }
+      expected: 7,
+    },
+    {
+      desc: 'when array contains multiple values',
+      message:
+        'returns the maximum difference between the indices of two elements',
+      input: [33, 9, 10, 3, 2, 60, 30, 33, 1],
+      expected: 6,
+    },
   ])('$desc', ({ input, expected }) => {
     test('$message', () => {
-      expect(findIndexMaxDifference(input)).toBe(expected)
-    })
-  })
-})
+      expect(findIndexMaxDifference(input)).toBe(expected);
+    });
+  });
+});
 
 describe('mergeSorted', () => {
   describe.each([
@@ -203,20 +230,32 @@ describe('mergeSorted', () => {
       desc: 'when arrays are empty',
       message: 'returns an empty array',
       input: [[], []],
-      expected: []
+      expected: [],
     },
     {
       desc: 'when arrays contain values',
       message: 'returns a merged sorted array',
-      input: [[1, 3, 5], [2, 4, 6, 7]],
-      expected: [1, 2, 3, 4, 5, 6, 7]
-    }
+      input: [
+        [1, 3, 5],
+        [2, 4, 6, 7],
+      ],
+      expected: [1, 2, 3, 4, 5, 6, 7],
+    },
+    {
+      desc: 'when arrays contain values',
+      message: 'returns a merged sorted array',
+      input: [
+        [8, 7, 5],
+        [3, 4, 6, 9],
+      ],
+      expected: [3, 4, 5, 6, 7, 8, 9],
+    },
   ])('$desc', ({ input, expected }) => {
     test('$message', () => {
-      expect(mergeSorted(input[0], input[1])).toEqual(expected)
-    })
-  })
-})
+      expect(mergeSorted(input[0], input[1])).toEqual(expected);
+    });
+  });
+});
 
 describe('findMissingNumber', () => {
   describe.each([
@@ -224,27 +263,26 @@ describe('findMissingNumber', () => {
       desc: 'when array is empty',
       message: 'returns -1',
       input: [],
-      expected: -1
+      expected: -1,
     },
     {
       desc: 'when array contains values',
       message: 'returns the missing number',
       input: [1, 2, 3, 5, 6, 7, 8],
-      expected: 4
+      expected: 4,
     },
     {
       desc: 'when array has no missing values',
       message: 'returns the missing number',
       input: [1, 2, 3, 4, 5, 6, 7, 8],
-      expected: -1
-    }
+      expected: -1,
+    },
   ])('$desc', ({ input, expected }) => {
     test('$message', () => {
-      expect(findMissingNumber(input)).toBe(expected)
-    })
-  })
-})
-
+      expect(findMissingNumber(input)).toBe(expected);
+    });
+  });
+});
 
 describe('buildData', () => {
   describe.each([
@@ -253,18 +291,18 @@ describe('buildData', () => {
       message: 'returns an empty object',
       names: [],
       values: [],
-      expected: {}
+      expected: {},
     },
     {
       desc: 'when arrays contain values',
       message: 'returns an object with the names and values',
       names: ['a', 'b', 'c'],
       values: [1, 2, 3],
-      expected: { a: 1, b: 2, c: 3 }
-    }
+      expected: { a: 1, b: 2, c: 3 },
+    },
   ])('$desc', ({ names, values, expected }) => {
     test('$message', () => {
-      expect(buildData(names, values)).toEqual(expected)
-    })
-  })
-})
+      expect(buildData(names, values)).toEqual(expected);
+    });
+  });
+});
