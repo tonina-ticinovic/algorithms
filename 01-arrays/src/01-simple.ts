@@ -213,4 +213,12 @@ export type Data = {
  * Example:
  * buildObject(['a', 'b', 'c'], [1, 2, 3]) => { a: 1, b: 2, c: 3 }
  */
-export const buildData = (names: string[], values: number[]): Data => ({});
+export const buildData = (names: string[], values: number[]): Data => {
+  let dataObjects: Data = {};
+
+  for (let i = 0; i < names.length; i++) {
+    dataObjects[names[i]] = values[i];
+  }
+
+  return dataObjects;
+};
