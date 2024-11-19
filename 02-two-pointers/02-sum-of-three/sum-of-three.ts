@@ -20,5 +20,24 @@ Examples
 	result true
 */
 export const findSumOfThree = (nums: number[], target: number): boolean => {
-  return false
-}
+  nums.sort((a, b) => a - b); // Sort the array in ascending order
+
+  for (let i = 0; i < nums.length; i++) {
+    let left = i + 1;
+    let right = nums.length - 1;
+
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right];
+
+      if (sum === target) {
+        return true;
+      } else if (sum < target) {
+        left++;
+      } else {
+        right--;
+      }
+    }
+  }
+
+  return false;
+};
