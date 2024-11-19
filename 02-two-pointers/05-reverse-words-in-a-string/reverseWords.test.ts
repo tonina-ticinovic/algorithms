@@ -1,4 +1,4 @@
-import { reverseWords } from './reverseWords'
+import { reverseWords } from './reverseWords';
 
 describe('reverseWords', () => {
   it.each([
@@ -8,7 +8,7 @@ describe('reverseWords', () => {
     ['Hello     World', 'World Hello'],
     ['Greeting123', 'Greeting123'],
   ])('reverses words in the sentence', (input, expected) => {
-    const result = reverseWords(input)
-    expect(result).toBe(expected)
-  })
-})
+    const result = reverseWords(input);
+    expect(result).toBe(expected);
+  });
+});
